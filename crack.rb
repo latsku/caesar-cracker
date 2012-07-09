@@ -11,20 +11,20 @@ end
 
 i=0
 while i <= 25 do
-  gues=''
+  guess=''
   word.bytes do |p|
     if p != 32 then
-      gues.concat(((((p-97)+i) % 26) + 97 ))
+      guess.concat(((((p-97)+i) % 26) + 97 ))
     else
-      gues.concat ' '
+      guess.concat ' '
     end
   end
   if !pattern.nil? then
-    if gues.include? pattern then
-      puts "+#{i} #{gues}"
+    if guess.include? pattern then
+      puts "+#{i} #{guess}"
     end
   else
-    puts "+#{i} #{gues}"
+    puts "+#{i} #{guess}"
   end
   i=i+1
 end
