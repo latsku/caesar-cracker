@@ -9,12 +9,15 @@ end
 ## Simple Ceasar
 ##
 
+add = [0]
 i=0
 while i <= 25 do
   guess=''
+  x=0
   word.bytes do |p|
     if p != 32 then
-      guess.concat(((((p-97)+i) % 26) + 97 ))
+      guess.concat  (( p - 97 + add[x] ) % 26 ) + 97 
+      x = ( x + 1 ) % add.size
     else
       guess.concat ' '
     end
@@ -27,5 +30,6 @@ while i <= 25 do
     puts "+#{i} #{guess}"
   end
   i=i+1
+  add[0]=i
 end
 
