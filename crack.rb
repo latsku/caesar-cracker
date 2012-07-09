@@ -13,7 +13,11 @@ i=0
 while i <= 25 do
   gues=''
   word.bytes do |p|
-    gues.concat(((((p-97)+i) % 26) + 97 ))
+    if p != 32 then
+      gues.concat(((((p-97)+i) % 26) + 97 ))
+    else
+      gues.concat ' '
+    end
   end
   if !pattern.nil? then
     if gues.include? pattern then
