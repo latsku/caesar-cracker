@@ -1,3 +1,23 @@
+require 'optparse'
+
+## Parse command line options
+options = {}
+optparse = OptionParser.new do|opts|
+  opts.banner = "Usage: crack.rb [options] ciphertext [pattern]"
+ 
+  options[:key] = nil
+  opts.on( '-k', '--key LENGTH', 'Key length' ) do |key|
+    options[:key] = key
+  end
+ 
+  opts.on( '-h', '--help', 'Display this screen' ) do
+    puts opts
+    exit
+  end
+end
+optparse.parse!
+
+
 word = ARGV[0].downcase.strip
 
 if !ARGV[1].nil? then
@@ -35,12 +55,16 @@ def crack (ciphertext,keyarray,pattern)
 	end	
 end
 
-##
-## Complex Ceasar
-##
-
+## Initialize key array
 add = [0]
+x = options[:key].to_i-1
+while x > 0 do
+	add.push(0)
+	x=x-1
+end
+
 i=add.size-1
 
+## Start recursive cracking
 incr_and_print(word,add,i,pattern)
 
