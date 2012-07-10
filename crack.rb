@@ -11,7 +11,7 @@ end
 
 add = [0]
 i=0
-while i <= 25 do
+while add[i] <= 25 do
   guess=''
   x=0
   word.bytes do |p|
@@ -24,12 +24,11 @@ while i <= 25 do
   end
   if !pattern.nil? then
     if guess.include? pattern then
-      puts "+#{i} #{guess}"
+      puts "+#{add[i]} #{guess}"
     end
   else
-    puts "+#{i} #{guess}"
+    puts "+#{add[i]} #{guess}"
   end
-  i=i+1
-  add[0]=i
+  add[i] = add[i] + 1
 end
 
