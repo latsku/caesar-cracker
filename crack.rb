@@ -24,11 +24,10 @@ while add[i] <= 25 do
   end
   if !pattern.nil? then
     if guess.include? pattern then
-      puts "+#{add[i]} #{guess}"
+      puts "+#{add} #{guess}"
     end
   else
-    puts "+#{add[i]} #{guess}"
+    puts "+#{add} #{guess}"
   end
   add[i] = add[i] + 1
 end
-
